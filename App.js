@@ -1,19 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import LoginForm from "./components/LoginForm";
+import Articles from "./components/Articles";
+
+export default class App extends React.Component {
+  state = {
+    loggedIn: false
+  };
+  render() {
+    if (!this.state.loggedIn) {
+      return <LoginForm />;
+    } else {
+      return <Articles />;
+    }
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
 });
