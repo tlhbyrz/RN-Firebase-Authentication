@@ -11,7 +11,7 @@ export default class LoginForm extends React.Component {
         <View style={styles.flexLogo}>
           <Logo />
         </View>
-        <View style={styles.flexEmail}>
+        <View style={styles.flexLogo}>
           <EmailAndPassword />
         </View>
       </View>
@@ -25,8 +25,5 @@ const styles = StyleSheet.create({
   },
   flexLogo: {
     flex: 1
-  },
-  flexEmail: {
-    flex: 2
   }
 });

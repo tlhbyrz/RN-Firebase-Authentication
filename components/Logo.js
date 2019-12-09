@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "flex-end",
+    paddingBottom: 10
   }
 });
