@@ -1,8 +1,11 @@
-export default class Loading extends Component {
+import React from "react";
+import { StyleSheet, View, ActivityIndicator } from "react-native";
+
+export default class Loading extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> Loading </Text>
+        <ActivityIndicator size="large" color="red" />
       </View>
     );
   }

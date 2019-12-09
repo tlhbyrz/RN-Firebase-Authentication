@@ -2,10 +2,12 @@ import React from "react";
 import {
   Text,
   StyleSheet,
-  View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from "react-native";
+
+import firebase from "firebase";
 
 export default class EmailAndPassword extends React.Component {
   state = {
@@ -14,9 +16,24 @@ export default class EmailAndPassword extends React.Component {
     error: ""
   };
 
+  _onButtonPress = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(this._onLoginSuccess)
+      .catch(error => this.setState({ error: error.message }));
+  };
+
+  _onLoginSuccess = () => {
+    this.setState({
+      loading: false,
+      error: ""
+    });
+  };
+
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <TextInput
           placeholderTextColor="black"
           placeholder="email"
@@ -33,12 +50,12 @@ export default class EmailAndPassword extends React.Component {
           style={styles.input}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={this._onButtonPress} style={styles.button}>
           <Text style={styles.text}>Login</Text>
         </TouchableOpacity>
 
         <Text style={styles.errortext}>{this.state.error}</Text>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
